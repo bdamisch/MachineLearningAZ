@@ -53,6 +53,9 @@ ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
 ann.add(tf.keras.layers.Dense(units=6, activation='relu'))
 
 # Adding the output layer
+# only a single neuron is needed to say yes/no
+# two neurons would be needed
+# sigmoid activation allows probabilities that binary outcome is one (leaves bank)
 ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 
 # Part 3 - Training the ANN
