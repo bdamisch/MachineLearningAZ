@@ -2,7 +2,7 @@
 
 # Importing the libraries
 import tensorflow as tf
-from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 tf.__version__
 
 # Part 1 - Data Preprocessing

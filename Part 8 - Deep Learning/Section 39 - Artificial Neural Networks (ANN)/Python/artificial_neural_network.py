@@ -61,9 +61,14 @@ ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 # Part 3 - Training the ANN
 
 # Compiling the ANN
+# adam optimizer updates the weights stochastically
+# binary_crossentropy for binary classification
+# categorical crossentropy is for classifying multiple categories
+# metrics is list of metrics to evaluate ANN during training
 ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 # Training the ANN on the Training set
+# batch size is the number of predictions in batch to be compared to same number of real results
 ann.fit(X_train, y_train, batch_size = 32, epochs = 100)
 
 # Part 4 - Making the predictions and evaluating the model
@@ -87,7 +92,15 @@ So, should we say goodbye to that customer?
 
 Solution:
 """
-
+print(X)
+#prediction for if this particular customer will leave the bank:
+print('Customer will leave bank:')
+#input must be in 2D array for predict method [[ ]]
+# predict method should be called on observatiosn that are scaled the same way as the training set
+# use sc object to scale the prediction via standardization, only apply transform and not fit because fit will cause information leakage
+# sigmoid output provides a probability that the customer will leave the bank
+print(ann.predict(sc.transform([[1, 0, 0, 600, 1, 40, 3, 60000, 2, 1, 1, 50000]])))
+# if predicated probability is > 50%, then they'll leave the bank
 print(ann.predict(sc.transform([[1, 0, 0, 600, 1, 40, 3, 60000, 2, 1, 1, 50000]])) > 0.5)
 
 """
@@ -99,6 +112,7 @@ Important note 2: Notice also that the "France" country was not input as a strin
 # Predicting the Test set results
 y_pred = ann.predict(X_test)
 y_pred = (y_pred > 0.5)
+# concatenate and display vector of predictions vs test side by side
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 
 # Making the Confusion Matrix
