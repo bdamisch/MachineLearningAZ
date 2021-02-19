@@ -5,8 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+read_file = r'C:\Users\Ben\Desktop\Udemy_ML_Py_R\ML_python\Machine Learning A-Z (Codes and Datasets)\Part 9 - Dimensionality Reduction\Section 43 - Principal Component Analysis (PCA)\Python\Wine.csv'
 # Importing the dataset
-dataset = pd.read_csv('Wine.csv')
+dataset = pd.read_csv(filepath_or_buffer=read_file)
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 

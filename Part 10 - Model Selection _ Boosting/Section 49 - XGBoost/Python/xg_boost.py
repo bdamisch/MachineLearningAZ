@@ -28,6 +28,8 @@ accuracy_score(y_test, y_pred)
 
 # Applying k-Fold Cross Validation
 from sklearn.model_selection import cross_val_score
+# k fold cross validation helps us to confirm that we didn't just get lucky on 1 test set
+# get k different accuracies, 1 for each test set
 accuracies = cross_val_score(estimator = classifier, X = X_train, y = y_train, cv = 10)
 print("Accuracy: {:.2f} %".format(accuracies.mean()*100))
 print("Standard Deviation: {:.2f} %".format(accuracies.std()*100))
