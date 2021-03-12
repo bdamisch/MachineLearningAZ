@@ -6,7 +6,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
-dataset = pd.read_csv('Social_Network_Ads.csv')
+read_file = r'C:\Users\Ben\Desktop\Udemy_ML_Py_R\ML_python\Machine Learning A-Z (Codes and Datasets)\Part 3 - Classification\Section 20 - Random Forest Classification\Python\Social_Network_Ads.csv'
+# Importing the dataset
+dataset = pd.read_csv(filepath_or_buffer=read_file)
+
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 
@@ -32,17 +35,18 @@ classifier = RandomForestClassifier(n_estimators = 10, criterion = 'entropy', ra
 classifier.fit(X_train, y_train)
 
 # Predicting a new result
-print(classifier.predict(sc.transform([[30,87000]])))
+#print(classifier.predict(sc.transform([[30,87000]])))
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
-print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
+#print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix, accuracy_score
 cm = confusion_matrix(y_test, y_pred)
-print(cm)
+#print(cm)
 accuracy_score(y_test, y_pred)
+#print(accuracy_score(y_test,y_pred))
 
 # Visualising the Training set results
 from matplotlib.colors import ListedColormap
